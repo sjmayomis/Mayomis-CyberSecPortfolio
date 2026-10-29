@@ -1,6 +1,35 @@
-# Mayomis-CyberSecPortfolio
-# Welcome to My Cybersecurity Portfolio
+# Mayomis Cybersecurity Portfolio
 
-🔐 Cybersecurity portfolio showcasing hands-on labs and practical projects developed through the Google Cybersecurity Certificate. Focused on security risk management, network security, Linux & SQL, threat and vulnerability analysis, incident detection and response, SIEM concepts, and Python automation.
+Aspiring SOC Analyst | Google Cybersecurity Certificate | 
 
-🎯 Currently building my skills toward a career in Security Operations (SOC), with a focus on security monitoring, investigation, incident response, and analytical problem-solving.
+BSIT graduate (Network and Security) and Google Cybersecurity Certificate holder, focused on starting a career in Security Operations. This portfolio shows the labs and projects I’ve completed to build my skills in detection, response, and security fundamentals.
+
+## Contact
+- LinkedIn: [[link]](https://www.linkedin.com/in/stephen-joshua-mayomis-357805376/)
+- Email: stephenjoshuamayomis@gmail.com
+
+## Skills and Tools
+| Area | Tools and concepts |
+|---|---|
+| SIEM and monitoring  |
+| Network analysis  |
+| Linux and SQL  |
+| Python  |
+| Frameworks  |
+| Incident response  |
+
+## Projects
+| Project | What I did | Tools | Link |
+|---|---|---|---|
+| Company Security Audit  |
+| Assets, Threats & Vulnerabilities  |
+| Network and Security  |
+| Linux & SQL  |
+| Detection & Response  |
+| Python Automation  |
+
+## What I'm Working On Now
+- Currently Working On my home lab.
+
+## Note on Content
+Projects are based on scenarios from the Google Cybersecurity Certificate. All data is fictional or from training environments. No real company data or credentials are included.
