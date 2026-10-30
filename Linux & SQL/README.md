@@ -8,7 +8,7 @@ All projects are based on scenarios from the Google Cybersecurity Certificate an
 
 | Project | What I did | Tools | Link |
 |---|---|---|---|
-| Apply Filters to SQL Queries | Investigated failed after-hours logins, activity on specific dates, and logins from outside Mexico, then located employee machines by department and office | SQL (MariaDB) | [Open](Apply%20filters%20to%20SQL%20queries.md) |
+| Apply Filters to SQL Queries | Investigated failed after-hours logins, activity on specific dates, and logins from outside Mexico, then located employee machines by department and office | SQL (MariaDB) | [Open](Apply%20Filters%20to%20SQL%20Queries.md) |
 | File Permissions in Linux | Reviewed file and directory permissions, found those that broke the organization's rules, and fixed them with `chmod` | Linux (`ls`, `cd`, `chmod`) | [Open](File%20permissions%20in%20Linux.md) |
 
 ## Skills demonstrated
