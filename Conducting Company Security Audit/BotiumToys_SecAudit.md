@@ -1,290 +1,113 @@
-# Controls and Compliance Assessment
+# Botium Toys: Controls and Compliance Assessment
 
-CASE STUDY
+*Case study based on a fictional company, completed as part of the Google Cybersecurity Certificate.*
 
-_This case study is based on a fictional company._
+## Executive Summary
 
-Botium Toys is a small U.S. business that develops and sells toys. The business has a single physical location, which serves as their main office, a storefront, and warehouse for their products. However, Botium Toy's online presence has grown, attracting customers in the U.S. and abroad. As a result, their information technology (IT) department is under increasing pressure to support their online market worldwide.
+Botium Toys has a risk score of **8 out of 10**. Only **5 of 14** security controls are in place, and only **4 of 12** compliance best practices are met (PCI DSS 0/4, GDPR 2/4, SOC 2/4).
 
-The manager of the IT department has decided that an internal IT audit needs to be conducted. She's worried about maintaining compliance and business operations as the company grows without a clear plan. She believes an internal audit can help better secure the company's infrastructure and help them identify and mitigate potential risks, threats, or vulnerabilities to critical assets. The manager is also interested in ensuring that they comply with regulations related to internally processing and accepting online payments and conducting business in the European Union (E.U.).
+The most urgent gaps are that every employee can access cardholder data and customer PII/SPII, and that credit card information is not encrypted. Together these expose the company to a data breach and to penalties under PCI DSS and GDPR.
 
-The IT manager starts by implementing the National Institute of Standards and Technology Cybersecurity Framework (NIST CSF), establishing an audit scope and goals, listing assets currently managed by the IT department, and completing a risk assessment. The goal of the audit is to provide an overview of the risks and/or fines that the company might experience due to the current state of their security posture.
+This report recommends 10 actions, starting with **least privilege, separation of duties, and encryption**.
 
-Your task is to review the IT manager's scope, goals, and risk assessment report. Then, perform an internal audit by completing a controls and compliance checklist.
+## Scenario
 
-# Botium Toys: Scope, goals, and risk assessment report
+Botium Toys is a small U.S. toy business with a single physical location (office, storefront, and warehouse) and a growing online presence in the U.S. and abroad. The IT manager is concerned about maintaining compliance and business operations as the company grows, and wants to understand the risks and possible fines caused by its current security posture. The company accepts online payments and serves customers in the European Union, so PCI DSS and GDPR both apply.
 
-## Scope and goals of the audit
+**My task:** review the IT manager's scope, goals, and risk assessment, then complete a controls and compliance checklist and make recommendations.
 
-**Scope:** The scope is defined as the entire security program at Botium Toys. This means all assets need to be assessed alongside internal processes and procedures related to the implementation of controls and compliance best practices.
+**Scope:** the entire security program at Botium Toys, including all assets, internal processes, and procedures.
 
-**Goals:** Assess existing assets and complete the controls and compliance checklist to determine which controls and compliance best practices need to be implemented to improve Botium Toys' security posture.
+**Goal:** determine which controls and compliance best practices need to be implemented to improve the company's security posture.
 
-## Current assets
+**Framework:** NIST Cybersecurity Framework (NIST CSF).
 
-Assets managed by the IT Department include:
+## Key Findings from the Risk Assessment
 
-- On-premises equipment for in-office business needs
-- Employee equipment: end-user devices (desktops/laptops, smartphones), remote workstations, headsets, cables, keyboards, mice, docking stations, surveillance cameras, etc.
-- Storefront products available for retail sale on site and online; stored in the company's adjoining warehouse
-- Management of systems, software, and services: accounting, telecommunication, database, security, ecommerce, and inventory management
-- Internet access
-- Internal network
-- Data retention and storage
-- Legacy system maintenance: end-of-life systems that require human monitoring
+- **Risk score:** 8/10. The impact of losing an asset is rated medium because IT does not know which assets are at risk. The risk of fines is high.
+- All employees can access internally stored data, including cardholder data and customer PII/SPII.
+- Credit card information is accepted, processed, transmitted, and stored internally **without encryption**.
+- Least privilege and separation of duties are not implemented.
+- There is no IDS, no disaster recovery plan, and no backups of critical data.
+- A password policy exists, but its requirements are weak and there is no centralized password management system.
+- Legacy systems are monitored, but not on a regular schedule, and intervention methods are unclear.
+- Strengths: a properly configured firewall, regularly monitored antivirus, a 72-hour breach notification plan for E.U. customers, enforced privacy policies, and good physical security (locks, CCTV, fire detection).
 
-## Risk assessment
+## Controls Assessment
 
-### Risk description
+Does Botium Toys currently have this control in place?
 
-Currently, there is inadequate management of assets. Additionally, Botium Toys does not have all of the proper controls in place and may not be fully compliant with U.S. and international regulations and standards.
+| Control | Category | Type | In place? | Evidence |
+|---|---|---|---|---|
+| Least privilege | Administrative | Preventative | ❌ No | All employees have access to internally stored data. |
+| Disaster recovery plans | Administrative | Corrective | ❌ No | No disaster recovery plans exist. |
+| Password policies | Administrative | Preventative | ❌ No | A policy exists, but its requirements are too weak and do not meet minimum complexity standards. |
+| Separation of duties | Administrative | Preventative | ❌ No | Not implemented. |
+| Firewall | Technical | Preventative | ✅ Yes | Blocks traffic according to an appropriately defined set of security rules. |
+| Intrusion detection system (IDS) | Technical | Detective | ❌ No | No IDS is installed. |
+| Backups | Technical | Corrective | ❌ No | No backups of critical company data. |
+| Antivirus software | Technical | Corrective | ✅ Yes | Installed and regularly monitored by IT. |
+| Manual monitoring, maintenance, and intervention for legacy systems | Technical | Preventative | ❌ No | Legacy systems are monitored, but there is no regular schedule and intervention methods are unclear. |
+| Encryption | Technical | Deterrent | ❌ No | Credit card information is accepted, processed, transmitted, and stored without encryption. |
+| Password management system | Technical | Preventative | ❌ No | No centralized system enforces the password policy. |
+| Locks (offices, storefront, warehouse) | Physical | Deterrent / Preventative | ✅ Yes | Sufficient locks at the physical location. |
+| Closed-circuit television (CCTV) | Physical | Preventative / Detective | ✅ Yes | Up-to-date CCTV surveillance. |
+| Fire detection and prevention | Physical | Detective / Preventative | ✅ Yes | Functioning fire detection and prevention systems. |
 
-### Control best practices
+**Result: 5 of 14 controls in place.**
 
-The first of the five functions of the NIST CSF is Identify. Botium Toys will need to dedicate resources to identify assets so they can appropriately manage them. Additionally, they will need to classify existing assets and determine the impact of the loss of existing assets, including systems, on business continuity.
+## Compliance Assessment
 
-### Risk score
+### Payment Card Industry Data Security Standard (PCI DSS)
 
-On a scale of 1 to 10, the risk score is 8, which is fairly high. This is due to a lack of controls and adherence to compliance best practices.
+| Best practice | In place? | Evidence |
+|---|---|---|
+| Only authorized users have access to customers' credit card information. | ❌ No | All employees can access internally stored data, including cardholder data. |
+| Credit card information is stored, accepted, processed, and transmitted in a secure environment. | ❌ No | Credit card information is stored internally without encryption. |
+| Implement data encryption procedures to secure credit card transaction touchpoints and data. | ❌ No | Encryption is not used for customers' credit card information. |
+| Adopt secure password management policies. | ❌ No | The password policy has weak requirements and there is no centralized password management system. |
 
-### Additional comments
+**Result: 0 of 4.**
 
-The potential impact from the loss of an asset is rated as medium, because the IT department does not know which assets would be at risk. The risk to assets or fines from governing bodies is high because Botium Toys does not have all of the necessary controls in place and is not fully adhering to best practices related to compliance regulations that keep critical data private/secure. Review the following bullet points for specific details:
+### General Data Protection Regulation (GDPR)
 
-- Currently, all Botium Toys employees have access to internally stored data and may be able to access cardholder data and customers' PII/SPII.
-- Encryption is not currently used to ensure confidentiality of customers' credit card information that is accepted, processed, transmitted, and stored locally in the company's internal database.
-- Access controls pertaining to least privilege and separation of duties have not been implemented.
-- The IT department has ensured availability and integrated controls to ensure data integrity.
-- The IT department has a firewall that blocks traffic based on an appropriately defined set of security rules.
-- Antivirus software is installed and monitored regularly by the IT department.
-- The IT department has not installed an intrusion detection system (IDS).
-- There are no disaster recovery plans currently in place, and the company does not have backups of critical data.
-- The IT department has established a plan to notify E.U. customers within 72 hours if there is a security breach. Additionally, privacy policies, procedures, and processes have been developed and are enforced among IT department members/other employees, to properly document and maintain data.
-- Although a password policy exists, its requirements are nominal and not in line with current minimum password complexity requirements (e.g., at least eight characters, a combination of letters and at least one number; special characters).
-- There is no centralized password management system that enforces the password policy's minimum requirements, which sometimes affects productivity when employees/vendors submit a ticket to the IT department to recover or reset a password.
-- While legacy systems are monitored and maintained, there is no regular schedule in place for these tasks and intervention methods are unclear.
-- The store's physical location, which includes Botium Toys' main offices, store front, and warehouse of products, has sufficient locks, up-to-date closed-circuit television (CCTV) surveillance, as well as functioning fire detection and prevention systems.
+| Best practice | In place? | Evidence |
+|---|---|---|
+| E.U. customers' data is kept private and secured. | ❌ No | All employees can access internally stored data, and necessary controls to protect critical data are missing. |
+| There is a plan to notify E.U. customers within 72 hours of a breach. | ✅ Yes | The company has an established plan. |
+| Data is properly classified and inventoried. | ❌ No | The risk assessment states that asset management is inadequate and assets need to be identified and classified. |
+| Privacy policies, procedures, and processes are enforced to properly document and maintain data. | ✅ Yes | Policies are developed and enforced. |
 
-# Control categories
+**Result: 2 of 4.**
 
-## Control categories
+### System and Organization Controls (SOC type 1, SOC type 2)
 
-Controls within cybersecurity are grouped into three main categories:
+| Best practice | In place? | Evidence |
+|---|---|---|
+| User access policies are established. | ❌ No | Least privilege and separation of duties are not implemented, and access controls are inadequate. |
+| Sensitive data (PII/SPII) is confidential and private. | ❌ No | Employees can access internally stored data, including PII/SPII. |
+| Data integrity ensures data is consistent, complete, accurate, and validated. | ✅ Yes | IT has implemented controls to ensure data integrity. |
+| Data is available to individuals authorized to access it. | ✅ Yes | IT ensures data availability. Note: because every employee has access, the set of "authorized" individuals is not clearly defined. |
 
-- Administrative/Managerial controls
-- Technical controls
-- Physical/Operational controls
+**Result: 2 of 4.**
 
-**Administrative/Managerial controls** address the human component of cybersecurity. These controls include policies and procedures that define how an organization manages data and clearly defines employee responsibilities, including their role in protecting the organization. While administrative controls are typically policy based, the enforcement of those policies may require the use of technical or physical controls.
+## Recommendations
 
-**Technical controls** consist of solutions such as firewalls, intrusion detection systems (IDS), intrusion prevention systems (IPS), antivirus (AV) products, encryption, etc. Technical controls can be used in a number of ways to meet organizational goals and objectives.
+Botium Toys should prioritize controls that protect sensitive customer information, reduce unauthorized access, and improve business continuity.
 
-**Physical/Operational controls** include door locks, cabinet locks, surveillance cameras, badge readers, etc. They are used to limit physical access to physical assets by unauthorized personnel.
-
-## Control types
-
-Control types include, but are not limited to:
-
-1. Preventative
-2. Corrective
-3. Detective
-4. Deterrent
-
-These controls work together to provide defense in depth and protect assets. **Preventative controls** are designed to prevent an incident from occurring in the first place. **Corrective controls** are used to restore an asset after an incident. **Detective controls** are implemented to determine whether an incident has occurred or is in progress. **Deterrent controls** are designed to discourage attacks.
-
-Review the following charts for specific details about each type of control and its purpose.
-
-**Administrative/Managerial Controls**
-
-| **Control Name**            | **Control Type** | **Control Purpose**                                                                                                                          |
-| --------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Least Privilege             | Preventative     | Reduce risk and overall impact of malicious insider or compromised accounts                                                                  |
-| Disaster recovery plans     | Corrective       | Provide business continuity                                                                                                                  |
-| Password policies           | Preventative     | Reduce likelihood of account compromise through brute force or dictionary attack techniques                                                  |
-| Access control policies     | Preventative     | Bolster confidentiality and integrity by defining which groups can access or modify data                                                     |
-| Account management policies | Preventative     | Managing account lifecycle, reducing attack surface, and limiting overall impact from disgruntled former employees and default account usage |
-| Separation of duties        | Preventative     | Reduce risk and overall impact of malicious insider or compromised accounts                                                                  |
-
-**Technical Controls**
-
-| **Control Name**                                 | **Control Type** | **Control Purpose**                                                                        |
-| ------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------ |
-| Firewall                                         | Preventative     | To filter unwanted or malicious traffic from entering the network                          |
-| IDS/IPS                                          | Detective        | To detect and prevent anomalous traffic that matches a signature or rule                   |
-| Encryption                                       | Deterrent        | Provide confidentiality to sensitive information                                           |
-| Backups                                          | Corrective       | Restore/recover from an event                                                              |
-| Password management                              | Preventative     | Reduce password fatigue                                                                    |
-| Antivirus (AV) software                          | Corrective       | Detect and quarantine known threats                                                        |
-| Manual monitoring, maintenance, and intervention | Preventative     | Necessary to identify and manage threats, risks, or vulnerabilities to out-of-date systems |
-
-**Physical/Operational Controls**
-
-| **Control Name**                                                   | **Control Type**       | **Control Purpose**                                                                                                                                                                                                  |
-| ------------------------------------------------------------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Time-controlled safe                                               | Deterrent              | Reduce attack surface and overall impact from physical threats                                                                                                                                                       |
-| Adequate lighting                                                  | Deterrent              | Deter threats by limiting "hiding" places                                                                                                                                                                            |
-| Closed-circuit television (CCTV)                                   | Preventative/Detective | Closed circuit television is both a preventative and detective control because it's presence can reduce risk of certain types of events from occurring, and can be used after an event to inform on event conditions |
-| Locking cabinets (for network gear)                                | Preventative           | Bolster integrity by preventing unauthorized personnel and other individuals from physically accessing or modifying network infrastructure gear                                                                      |
-| Signage indicating alarm service provider                          | Deterrent              | Deter certain types of threats by making the likelihood of a successful attack seem low                                                                                                                              |
-| Locks                                                              | Deterrent/Preventative | Bolster integrity by deterring and preventing unauthorized personnel, individuals from physically accessing assets                                                                                                   |
-| Fire detection and prevention (fire alarm, sprinkler system, etc.) | Detective/Preventative | Detect fire in physical location and prevent damage to physical assets such as inventory, servers, etc.                                                                                                              |
-
-# Controls and compliance checklist
-
-To complete the controls assessment checklist, refer to the information provided in the [scope, goals, and risk assessment report](https://docs.google.com/document/d/1s2u_RuhRAI40JSh-eZHvaFsV1ZMxcNSWXifHDTOsgFc/template/preview#heading=h.evidx83t54sc). For more details about each control, including the type and purpose, refer to the [control categories](https://docs.google.com/document/d/1btezuy_bMKWoK8pd97ZuzdWB9y6au_zfkrpkfVf8ktI/template/preview) document.
-
-Then, select "yes" or "no" to answer the question: _Does Botium Toys currently have this control in place?_
-
-**Controls assessment checklist**
-
-| **Yes** | **No** | **Control**                                                         |
-| ------- | ------ | ------------------------------------------------------------------- |
-|         | ❌     | Least Privilege                                                     |
-|         | ❌     | Disaster recovery plans                                             |
-|         | ❌     | Password policies                                                   |
-|         | ❌     | Separation of duties                                                |
-| ✅      |        | Firewall                                                            |
-|         | ❌     | Intrusion detection system (IDS)                                    |
-|         | ❌     | Backups                                                             |
-| ✅      |        | Antivirus software                                                  |
-|         | ❌     | Manual monitoring, maintenance, and intervention for legacy systems |
-|         | ❌     | Encryption                                                          |
-|         | ❌     | Password management system                                          |
-| ✅      |        | Locks (offices, storefront, warehouse)                              |
-| ✅      |        | Closed-circuit television (CCTV) surveillance                       |
-| ✅      |        | Fire detection/prevention (fire alarm, sprinkler system, etc.)      |
-
-**Control summary**
-
-_Implemented_
-
-| Firewall                  | The IT department has a firewall configured to detect and block traffic according to security rules. |
-| ------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Anti Virus Software       | Antivirus software is installed and regularly monitored.                                             |
-| Locks                     | The physical location has sufficient locks installed.                                                |
-| CCTV                      | The location has up to date Closed-circuit television surveillance.                                  |
-| Fire Detection/preventive | There are functioning fire detection and prevention systems in place.                                |
-
-_Not Implemented_
-
-| Least Privilage                                                    | All employees have access to internally stored data.                                                                               |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Disaster recovery plans                                            | There are no disaster recovery plans in place.                                                                                     |
-| Password policies                                                  | There is a password policy in place but its requirements are too weak and does not meet the stated minimum complexity requirement. |
-| Separation of duties                                               | Separation of duties has not been implemented.                                                                                     |
-| Intrution detection system                                         | There is no IDS installed.                                                                                                         |
-| Backups                                                            | The company does not have a backup of critical company data.                                                                       |
-| Manual Monitoring, maintenance and intervention for legacy systems | Although legacy systems are monitored there is no regular schedule and intervention methods are unclear.                           |
-| Encryption                                                         | Customer credit card information are not encrypted when stored.                                                                    |
-| Password management system                                         | There is no centralized password management system in place.                                                                       |
-
-**Compliance checklist**
-
-Payment Card Industry Data Security Standard (PCI DSS)
-
-| **Yes** | **No** | **Best practice**                                                                                            |
-| ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-|         | ❌     | Only authorized users have access to customers' credit card information.                                     |
-|         | ❌     | Credit card information is stored, accepted, processed, and transmitted internally, in a secure environment. |
-|         | ❌     | Implement data encryption procedures to better secure credit card transaction touch points and data.         |
-|         | ❌     | Adopt secure password management policies.                                                                   |
-
-**Compliance Summary**
-
-_Not Implemented_
-
-| Only authorized users have access to customers' credit card information.                                     | All employees have access to internally stored data and have ability to access cardholder data.      |
-| ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| Credit card information is stored, accepted, processed, and transmitted internally, in a secure environment. | Credit card information is stored internally without any encryption.                                 |
-| Implement data encryption procedures to better secure credit card transaction touchpoints and data.          | Encryption is not currently used for customers credit card information.                              |
-| Adopt secure password management policies.                                                                   | The password policy has weak requirements and no centralized password management system is in place. |
-
-General Data Protection Regulation (GDPR)
-
-| **Yes** | **No** | **Best practice**                                                                                                 |
-| ------- | ------ | ----------------------------------------------------------------------------------------------------------------- |
-|         | ❌     | E.U. customers' data is kept private/secured.                                                                     |
-| ✅      |        | There is a plan in place to notify E.U. customers within 72 hours if their data is compromised/there is a breach. |
-|         | ❌     | Ensure data is properly classified and inventoried.                                                               |
-| ✅      |        | Enforce privacy policies, procedures, and processes to properly document and maintain data.                       |
-
-General Data Protection Summary
-
-_Implemented_
-
-| There is a plan in place to notify E.U. customers within 72 hours if their data is compromised/there is a breach. | The company has a plan established to notify E.U. customers within 72 hours.  |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Enforce privacy policies, procedures, and processes to properly document and maintain data.                       | Company privacy policies, procedures and processed are developed and enforced |
-
-_Not Implemented_
-
-| E.U. customers' data is kept private/secured.       | All employees have access to internally stored data and the company doesn't have all necessary controls to protect critical company data. |
-| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Ensure data is properly classified and inventoried. | The risk assessment states that the asset management is inadequate and assets need to be identified and classified.                       |
-
-System and Organizations Controls (SOC type 1, SOC type 2)
-
-| **Yes** | **No** | **Best practice**                                                                          |
-| ------- | ------ | ------------------------------------------------------------------------------------------ |
-|         | ❌     | User access policies are established.                                                      |
-|         | ❌     | Sensitive data (PII/SPII) is confidential/private.                                         |
-| ✅      |        | Data integrity ensures the data is consistent, complete, accurate, and has been validated. |
-| ✅      |        | Data is available to individuals authorized to access it.                                  |
-
-System and Organized Controls Summary
-
-_Implemented_
-
-| Data integrity ensures the data is consistent, complete, accurate, and has been validated. | Company IT department has implemented controls to ensure data integrity. |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| Data is available to individuals authorized to access it.                                  | Company IT department ensures data availability                          |
-
-_Not implemented_
-
-| User access policies are established.              | Least privilege and separation of duties are not implemented and access controls are inadequate |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Sensitive data (PII/SPII) is confidential/private. | Employees have access to internally stored data and have ability to access PII/SPII             |
-
-**Recommendations (optional):**
-
-Based on the current risk assessment Botium Toys should prioritize the implementation of controls needed to protect sensitive customer information, reduce unauthorized access and improve business continuity.
-
-- Implement least privilege
-
-Company should restrict access to internal data based on employee's job responsibilities. All employees should only have the access to information and systems required to perform their duties. This will greatly reduce the risk of unauthorized access to critical company data.
-
-- Implement separation of duties
-
-The company needs to separate critical responsibilities among it's employees. This would greatly reduce the risk of fraud, errors and malicious activities by ensuring that a single employee does not have excessive control over sensitive processes.
-
-- Strengten password policies
-
-The company need to implement a stronger password requirements, including a required minimum length, combination of letters, numbers and special characters as specified in the risk assessment. This requirements needs to be consistently enforced
-
-- Implement centralized password management system
-
-The company should have a centralized password management system to enforce password requirements for all employees and make account recovery and resets more efficient.
-
-- Encypt sensitive company data
-
-Customers critical information needs to be encrypted this is important since the company accepts, processes, transmits and stores credit card information internally.
-
-- Implement regular backups and disaster recovery
-
-The company should have regular backup of data and a disaster recovery plan established. This controls in place will help the company recover from security incidents, system failures or other events that could disrupt the business operations.
-
-- Implement an intrusion detection system
-
-The company should have an intrusion detection system in place in order to monitor and detect suspicious or anomalous network activity strengthening the company's ability to identify potential security incidents.
-
-- Establish a scheduled monitoring maintenance for legacy systems
-
-The company IT department should establish a regular schedule for monitoring and maintaining legacy systems. There should also be clear intervention procedures documented so that outdated systems can be managed consistently.
-
-- Improve company asset management and classification
-
-The company should identify, inventory and classify its assets and determine which systems and data are most critical so that security resources can be allocated appropriately.
-
-- Prioritize PCI DSS and GDPR compliance
-
-Since the company processes customer payment information and conducts business in the E.U. controls related to PCI DSS and GPDR needs to be prioritized. In particular, the company access restrictions, encryption, data classification, privacy controls and breach notification procedures should be maintained and improved accordingly.
+| Priority | Recommendation | NIST CSF function | Why |
+|---|---|---|---|
+| Critical | Implement least privilege | Protect | Restrict access to internal data based on job responsibilities. This greatly reduces the risk of unauthorized access to critical data. |
+| Critical | Implement separation of duties | Protect | Ensures no single employee has excessive control over sensitive processes, reducing the risk of fraud, errors, and malicious activity. |
+| Critical | Encrypt sensitive customer data | Protect | The company accepts, processes, transmits, and stores credit card information internally, so encryption is essential for PCI DSS and GDPR. |
+| High | Strengthen the password policy | Protect | Require a minimum length and a combination of letters, numbers, and special characters, and enforce it consistently. |
+| High | Implement a centralized password management system | Protect | Enforces password requirements for all employees and makes account recovery and resets more efficient. |
+| High | Implement regular backups and a disaster recovery plan | Recover | Allows the company to recover from security incidents, system failures, or other events that disrupt operations. |
+| High | Implement an intrusion detection system | Detect | Monitors for suspicious or anomalous network activity so incidents can be identified sooner. |
+| Medium | Improve asset management and classification | Identify | Identify, inventory, and classify assets and determine which systems and data are most critical, so security resources can be allocated appropriately. Also supports GDPR. |
+| Medium | Schedule monitoring and maintenance for legacy systems | Protect | Establish a regular schedule and document clear intervention procedures so outdated systems are managed consistently. |
+| Ongoing | Prioritize PCI DSS and GDPR compliance | All | Since the company processes payments and does business in the E.U., maintain and improve access restrictions, encryption, data classification, privacy controls, and breach notification procedures. |
+
+## Conclusion
+
+Botium Toys has solid physical security, a working firewall and antivirus, and a breach notification plan, but its handling of sensitive customer data is the main weakness. Fixing access control and encryption first would close the largest gaps in PCI DSS and GDPR compliance and substantially reduce the risk of a damaging breach.
