@@ -25,7 +25,7 @@ I displayed the rule with `cat`:
 cat custom.rules
 ```
 
-![Contents of custom.rules](images/suricata-01-custom-rules.jpg)
+![Contents of custom.rules](Screenshots/suricata-01-custom-rules.jpg)
 
 ```
 alert http $HOME_NET any -> $EXTERNAL_NET any (msg:"GET on wire"; flow:established,to_server; content:"GET"; http_method; sid:12345; rev:3;)
@@ -46,7 +46,7 @@ The action is the first word and sets what Suricata does when a packet matches. 
 
 The header defines which traffic the rule applies to: protocol, source and destination addresses and ports, and direction.
 
-![Rule header highlighted](images/suricata-02-rule-header.jpg)
+![Rule header highlighted](Screenshots/suricata-02-rule-header.jpg)
 
 - `http`: the rule applies only to HTTP traffic
 - `$HOME_NET any -> $EXTERNAL_NET any`: traffic going from the home network (any port) to external networks (any port). The arrow shows the direction. `$HOME_NET` is a variable defined in `/etc/suricata/suricata.yaml` that stands for the organization's local network
@@ -55,7 +55,7 @@ The header defines which traffic the rule applies to: protocol, source and desti
 
 The options, written in parentheses and separated by semicolons, narrow down exactly what to match.
 
-![Rule options highlighted](images/suricata-03-rule-options.jpg)
+![Rule options highlighted](Screenshots/suricata-03-rule-options.jpg)
 
 | Option | Meaning |
 |---|---|
@@ -75,7 +75,7 @@ I ran Suricata against the sample capture:
 sudo suricata -r sample.pcap -S custom.rules -k none
 ```
 
-![Running Suricata](images/suricata-04-run-suricata.jpg)
+![Running Suricata](Screenshots/suricata-04-run-suricata.jpg)
 
 | Option | Meaning |
 |---|---|
@@ -93,7 +93,7 @@ Suricata read 1 file containing 200 packets (54,238 bytes) and wrote its alerts 
 cat /var/log/suricata/eve.json
 ```
 
-![Raw eve.json output](images/suricata-05-eve-json-raw.jpg)
+![Raw eve.json output](Screenshots/suricata-05-eve-json-raw.jpg)
 
 To make it readable I used `jq`:
 
@@ -101,7 +101,7 @@ To make it readable I used `jq`:
 jq . /var/log/suricata/eve.json | less
 ```
 
-![eve.json formatted with jq](images/suricata-06-eve-json-jq.jpg)
+![eve.json formatted with jq](Screenshots/suricata-06-eve-json-jq.jpg)
 
 `jq` can also pull out specific fields. This command returns only the timestamp, flow ID, alert signature, protocol, and destination IP:
 
@@ -109,7 +109,7 @@ jq . /var/log/suricata/eve.json | less
 jq -c "[.timestamp,.flow_id,.alert.signature,.proto,.dest_ip]" /var/log/suricata/eve.json
 ```
 
-![Extracting specific fields with jq](images/suricata-07-jq-extract-fields.jpg)
+![Extracting specific fields with jq](Screenshots/suricata-07-jq-extract-fields.jpg)
 
 ## Findings
 
