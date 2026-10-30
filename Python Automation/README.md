@@ -8,7 +8,7 @@ Both projects are based on scenarios from the Google Cybersecurity Certificate a
 
 | File | What it does | Concepts |
 |---|---|---|
-| [File Automation Algorithm](File%20Automation%20Algorithm.md) | Step-by-step write-up with screenshots of the allow list update | File handling, strings and lists, loops, conditionals |
+| [File Automation Algorithm](File%20Automation.md) | Step-by-step write-up with screenshots of the allow list update | File handling, strings and lists, loops, conditionals |
 | [`update_allow_list.py`](update_allow_list.py) | Removes IP addresses on a remove list from the allow list file | File handling, strings and lists, loops, conditionals, functions |
 | [`allow_list.txt`](allow_list.txt) | Sample allow list (fictional IP addresses) for running the script | |
 | [Develop an Algorithm](Develop%20an%20Algorithm.md) | Step-by-step write-up of the device login algorithm, task by task | Lists, indexing, list methods, conditionals, functions |
