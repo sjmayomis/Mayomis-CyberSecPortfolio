@@ -1,4 +1,6 @@
-**Incident handler's journal**
+# Incident Handler's Journal
+
+A record of incident response and network analysis exercises I completed as part of the Google Cybersecurity Certificate. Each entry documents the scenario, the tools I used, and what I learned.
 
 **Scenario #1**
 
@@ -16,6 +18,20 @@ Once the attackers gained access, they deployed their ransomware, which encrypte
 | Tool(s) used               | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | The 5 W's                  | • **Who**: Group of unethical hackers<br>• **What**: ransomware security incident<br>• **Where**: At a health care company<br>• **When**: Tuesday 9:00 a.m.<br>• **Why**: The incident happened when the unethical hackers gained access the company's systems using a phishing attack. After an unsuspecting company employee downloaded malicious files containing malware on the emails, the attackers launched their ransomware on the company's systems by encrypting critical files. after that the attackers left a note demanding a large sum of money for the decryption key. |
 | Additional notes           | 1\. How could the health care company prevent an incident like this from occurring again?<br>2\. Should the company pay the ransom to retrieve the decryption key?                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+**Additional notes**
+
+*How could the clinic prevent this from happening again?*
+- Run regular security awareness training so employees can spot phishing emails.
+- Use email filtering and attachment sandboxing to block malicious attachments.
+- Deploy endpoint protection (EDR/antivirus) and keep systems patched.
+- Require multi-factor authentication and limit user privileges.
+- Keep tested, offline backups of patient data so files can be restored without paying.
+- Segment the network so malware cannot spread easily, and maintain a written incident response plan.
+
+*Should the company pay the ransom?*
+Generally no. Paying does not guarantee the files will be restored, it funds criminal groups, and it can mark the clinic as a target for future attacks. Law enforcement agencies such as the FBI and CISA advise against paying. In a healthcare setting, patient safety could push leadership toward considering payment, so the decision should be made with legal counsel, law enforcement, and incident response experts. Good backups are the best way to avoid facing that choice.
+
 
 **Scenario #2**
 
@@ -71,3 +87,16 @@ Now that you have the file hash, you will use VirusTotal to uncover additional I
 | Tool(s) used               | For this activity, I used VirusTotal an investigative tool that analyzes files and URLs for malicious content such as viruses, worms, trojans, and more.                                                                                                                                                                                                                                                            |
 | The 5 W's                  | • **Who**: An unknown malicious actor<br>• **What**: An email sent to an employee contained a malicious file attachment with the SHA-256 file hash of 54e6ea47eb04634d3e87fd7787e2136ccfbcc80ade34f246a12cf93bab527f6b<br>• **Where**: An employee's computer at a financial services company<br>• **When**: At 1:20 p.m.<br>• **Why**: An employee downloaded and executed a malicious file attachment via e-mail. |
 | Additional notes           | How can this incident be prevented in the future?                                                                                                                                                                                                                                                                                                                                                                   |
+
+*How can this incident be prevented in the future?*
+- Train employees to be cautious with unexpected attachments, especially password-protected files with the password in the same email.
+- Use an email gateway that scans or sandboxes attachments, and block risky file types and macros.
+- Use endpoint detection and response (EDR) to catch and stop malicious payloads.
+- Add known-bad file hashes and related IoCs to blocklists.
+- Apply least privilege so a compromised account has limited reach.
+
+
+
+
+
+
