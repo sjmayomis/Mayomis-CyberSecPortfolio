@@ -10,7 +10,7 @@ All projects are based on scenarios from the Google Cybersecurity Certificate an
 |---|---|---|---|
 | Incident Handler's Journal | Documented four security exercises: a ransomware attack on a health care clinic, a packet capture analysis, a live traffic capture, and an investigation of a suspicious file hash | Wireshark, tcpdump, VirusTotal | [Open](Incident%20Handler%27s%20Journal.md) |
 | Wireshark Lab | Analyzed a packet capture and used display filters to examine IP, MAC, DNS, TCP, and HTTP traffic | Wireshark | [Open](Wireshark%20Lab.md) |
-| tcpdump Lab | Captured live traffic from the command line, saved it to a pcap file, and filtered and inspected the saved packets | tcpdump, curl | [Open](TCPdump%20Lab.md) |
+| tcpdump Lab | Captured live traffic from the command line, saved it to a pcap file, and filtered and inspected the saved packets | tcpdump, curl | [Open](TCP%20dump%20Lab.md) |
 | Suricata Lab | Examined a custom IDS rule, triggered it with a sample capture, and analyzed the alerts in the `eve.json` log | Suricata, jq | [Open](Suricata%20Lab.md) |
 
 ## Skills demonstrated
